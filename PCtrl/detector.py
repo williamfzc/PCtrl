@@ -33,10 +33,10 @@ def find_target(target_name: str) -> typing.Tuple[controller.Point, bool]:
     return point, existed
 
 
-def click_target(target_name: str, count: int = None):
+def click_target(target_name: str):
     point, existed = find_target(target_name)
     assert existed, 'target {} not existed'.format(target_name)
-    controller.left_click(point, count)
+    controller.left_click(point)
 
 
 if __name__ == '__main__':

@@ -1,3 +1,3 @@
 HOST = '127.0.0.1'
 PORT = 9410
-OFFSET = (0, 100)
+OFFSET = (0, 0)

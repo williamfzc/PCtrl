@@ -1,9 +1,8 @@
-from pynput.mouse import Button, Controller
+import pyautogui
 from collections import namedtuple
 
 from PCtrl import config
 
-_mouse = Controller()
 Point = namedtuple('Point', ('x', 'y'))
 
 
@@ -12,19 +11,17 @@ def fix_point(old_point: Point) -> Point:
     return Point(old_point.x + offset_x, old_point.y + offset_y)
 
 
-def left_click(target_point: Point, count: int = None):
+def left_click(target_point: Point):
     target_point = fix_point(target_point)
-    _mouse.move(*target_point)
-    if not count:
-        count = 1
-    _mouse.click(Button.left, count)
+    pyautogui.moveTo(*target_point)
+    pyautogui.click()
 
 
-def right_click(target_point: Point, count: int = None):
+def right_click(target_point: Point):
     target_point = fix_point(target_point)
-    _mouse.move(*target_point)
-    _mouse.click(Button.right, count)
+    pyautogui.moveTo(*target_point)
+    pyautogui.click()
 
 
 def current_point() -> Point:
-    return _mouse.position
+    return Point(*pyautogui.position())
