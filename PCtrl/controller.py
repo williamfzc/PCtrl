@@ -11,16 +11,18 @@ def fix_point(old_point: Point) -> Point:
     return Point(old_point.x + offset_x, old_point.y + offset_y)
 
 
-def left_click(target_point: Point):
+def _click(target_point: Point, **kwargs):
     target_point = fix_point(target_point)
     pyautogui.moveTo(*target_point)
-    pyautogui.click()
+    pyautogui.click(**kwargs)
 
 
-def right_click(target_point: Point):
-    target_point = fix_point(target_point)
-    pyautogui.moveTo(*target_point)
-    pyautogui.click()
+def left_click(target_point: Point, **kwargs):
+    _click(target_point, button='left', **kwargs)
+
+
+def right_click(target_point: Point, **kwargs):
+    _click(target_point, button='right', **kwargs)
 
 
 def current_point() -> Point:

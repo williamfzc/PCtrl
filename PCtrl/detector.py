@@ -12,6 +12,9 @@ fi_client = FindItStandardClient(
     config.PORT,
 )
 
+# no log by default
+fi_client.switch_log(False)
+
 
 def get_screen_png() -> str:
     """ screen shot, save it, and return its path """
@@ -37,7 +40,3 @@ def click_target(target_name: str):
     point, existed = find_target(target_name)
     assert existed, 'target {} not existed'.format(target_name)
     controller.left_click(point)
-
-
-if __name__ == '__main__':
-    click_target('1.png')
